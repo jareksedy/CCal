@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CAE7372429F5A097000982C1 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE7372329F5A097000982C1 /* main.swift */; };
+		CAE7372B29F5A203000982C1 /* Array+PushPopPeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE7372A29F5A203000982C1 /* Array+PushPopPeek.swift */; };
+		CAE7372E29F5A305000982C1 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE7372D29F5A305000982C1 /* Calculator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,8 @@
 /* Begin PBXFileReference section */
 		CAE7372029F5A097000982C1 /* CCal */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CCal; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAE7372329F5A097000982C1 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		CAE7372A29F5A203000982C1 /* Array+PushPopPeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+PushPopPeek.swift"; sourceTree = "<group>"; };
+		CAE7372D29F5A305000982C1 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +61,19 @@
 		CAE7372229F5A097000982C1 /* CCal */ = {
 			isa = PBXGroup;
 			children = (
+				CAE7372C29F5A2D8000982C1 /* Extensions */,
+				CAE7372D29F5A305000982C1 /* Calculator.swift */,
 				CAE7372329F5A097000982C1 /* main.swift */,
 			);
 			path = CCal;
+			sourceTree = "<group>";
+		};
+		CAE7372C29F5A2D8000982C1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CAE7372A29F5A203000982C1 /* Array+PushPopPeek.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -120,7 +134,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAE7372B29F5A203000982C1 /* Array+PushPopPeek.swift in Sources */,
 				CAE7372429F5A097000982C1 /* main.swift in Sources */,
+				CAE7372E29F5A305000982C1 /* Calculator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

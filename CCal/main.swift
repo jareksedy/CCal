@@ -7,5 +7,14 @@
 
 import Foundation
 
-print("Hello, World!")
+var input: String
 
+repeat {
+    print("exp:", terminator: " ")
+    input = readLine() ?? ""
+    if let result = calculate(input) {
+        print("res:", result)
+    } else {
+        print("err!")
+    }
+} while input != ""
