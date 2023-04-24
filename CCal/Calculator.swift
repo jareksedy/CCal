@@ -7,16 +7,41 @@
 
 import Foundation
 
-let operators = [
-    "^": (prec: 4, rAssoc: true),
-    "*": (prec: 3, rAssoc: false),
-    "/": (prec: 3, rAssoc: false),
-    "+": (prec: 2, rAssoc: false),
-    "-": (prec: 2, rAssoc: false),
+let operators: [String: (prec: Int, rAssoc: Bool)] = [
+    .power: (prec: 4, rAssoc: true),
+    .multiplication: (prec: 3, rAssoc: false),
+    .division: (prec: 3, rAssoc: false),
+    .plus: (prec: 2, rAssoc: false),
+    .minus: (prec: 2, rAssoc: false),
 ]
 
 var stringStack: [String] = [] // holds operators and left parenthesis
 var doubleStack: [Double] = [] // used to calculate the result of the expression
+
+func parseString(_ string: String) -> [String] {
+    let arithmeticOperators: Set<Character> = ["+", "-", "*", "/", "%", "^"]
+    var result: [String] = []
+    var currentString: String = ""
+    
+    for char in string {
+        if arithmeticOperators.contains(char) {
+            if !currentString.isEmpty {
+                result.append(currentString)
+            }
+            currentString = String(char)
+            result.append(currentString)
+            currentString = ""
+        } else {
+            currentString.append(char)
+        }
+    }
+    
+    if !currentString.isEmpty {
+        result.append(currentString)
+    }
+    
+    return result
+}
 
 func performOperation(_ a: Double, _ b: Double, _ op: String) -> Double? {
     switch op {
@@ -30,6 +55,8 @@ func performOperation(_ a: Double, _ b: Double, _ op: String) -> Double? {
 }
 
 func rpn(_ tokens: [String]) -> [String] {
+    stringStack.removeAll()
+    
     var rpn : [String] = []
     
     for tok in tokens {
@@ -69,7 +96,8 @@ func rpn(_ tokens: [String]) -> [String] {
 }
 
 func calculate(_ exp: String) -> Double? {
-    let tokens = exp.split{ $0 == " " }.map(String.init)
+    doubleStack.removeAll()
+    let tokens = exp.tokenize()
     let infixExp = rpn(tokens)
     
     infixExp.forEach { op in

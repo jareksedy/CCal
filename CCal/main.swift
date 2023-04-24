@@ -9,12 +9,13 @@ import Foundation
 
 var input: String
 
-repeat {
-    print("exp:", terminator: " ")
+while true {
+    print("Введите выражение:", terminator: " ")
     input = readLine() ?? ""
+    if input == "" { break }
     if let result = calculate(input) {
-        print("res:", result)
+        print("Результат выражения \(input.tokenize().joined(separator: .whitespace)) =", result)
     } else {
-        print("err!")
+        print("Ошибка в выражении!")
     }
-} while input != ""
+}
