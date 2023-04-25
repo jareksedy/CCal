@@ -19,7 +19,7 @@ var stringStack: [String] = [] // holds operators and left parenthesis
 var doubleStack: [Double] = [] // used to calculate the result of the expression
 
 func parseString(_ string: String) -> [String] {
-    let arithmeticOperators: Set<Character> = ["+", "-", "*", "/", "%", "^"]
+    let arithmeticOperators: Set<Character> = ["+", "-", "*", "/", "%", "^", "(", ")"]
     var result: [String] = []
     var currentString: String = ""
     

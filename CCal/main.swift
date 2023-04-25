@@ -10,12 +10,13 @@ import Foundation
 var input: String
 
 while true {
-    print("Введите выражение:", terminator: " ")
+    print("exp:", terminator: " ")
     input = readLine() ?? ""
     if input == "" { break }
+    
     if let result = calculate(input) {
-        print("Результат выражения \(input.tokenize().joined(separator: .whitespace)) =", result)
+        print("\(input.tokenize().joined(separator: .whitespace)) =", result)
     } else {
-        print("Ошибка в выражении!")
+        print("\(input.tokenize().joined(separator: .whitespace)) = err!")
     }
 }

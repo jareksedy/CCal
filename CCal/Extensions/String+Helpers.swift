@@ -9,12 +9,12 @@ import Foundation
 
 extension String {
     func strip() -> String {
-        let allowedCharacters = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+-*/."
+        let allowedCharacters = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ^2+-*/.()"
         return self.filter(allowedCharacters.reversed().contains)
     }
     
     func tokenize() -> [String] {
-        let arithmeticOperators: Set<Character> = ["+", "-", "*", "/", "%", "^"]
+        let arithmeticOperators: Set<Character> = ["(", "+", "-", "*", "/", "%", "^", ")"]
         var result: [String] = []
         var currentString: String = ""
         
