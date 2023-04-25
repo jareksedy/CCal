@@ -15,9 +15,6 @@ let operators: [String: (prec: Int, rAssoc: Bool)] = [
     .minus: (prec: 2, rAssoc: false),
 ]
 
-var stringStack: [String] = [] // holds operators and left parenthesis
-var doubleStack: [Double] = [] // used to calculate the result of the expression
-
 func parseString(_ string: String) -> [String] {
     let arithmeticOperators: Set<Character> = ["+", "-", "*", "/", "%", "^", "(", ")"]
     var result: [String] = []
@@ -45,27 +42,26 @@ func parseString(_ string: String) -> [String] {
 
 func performOperation(_ a: Double, _ b: Double, _ op: String) -> Double? {
     switch op {
-    case "+": return a + b
-    case "-": return a - b
-    case "*": return a * b
-    case "/": return a / b
-    case "^": return pow(a, b)
+    case .plus: return a + b
+    case .minus: return a - b
+    case .multiplication: return a * b
+    case .division: return a / b
+    case .power: return pow(a, b)
     default: return nil
     }
 }
 
 func rpn(_ tokens: [String]) -> [String] {
-    stringStack.removeAll()
-    
-    var rpn : [String] = []
+    var stack: [String] = [] // holds operators and left parenthesis
+    var rpn: [String] = []
     
     for tok in tokens {
         switch tok {
         case "(":
-            stringStack += [tok] // push "(" to stack
+            stack.push(tok) // push "(" to stack
         case ")":
-            while !stringStack.isEmpty {
-                let op = stringStack.removeLast() // pop item from stack
+            while !stack.isEmpty {
+                let op = stack.pop()! // pop item from stack
                 if op == "(" {
                     break // discard "("
                 } else {
@@ -74,43 +70,44 @@ func rpn(_ tokens: [String]) -> [String] {
             }
         default:
             if let o1 = operators[tok] { // token is an operator?
-                for op in stringStack.reversed() {
+                for op in stack.reversed() {
                     if let o2 = operators[op] {
                         if !(o1.prec > o2.prec || (o1.prec == o2.prec && o1.rAssoc)) {
                             // top item is an operator that needs to come off
-                            rpn += [stringStack.removeLast()] // pop and add it to the result
+                            rpn += [stack.pop()!] // pop and add it to the result
                             continue
                         }
                     }
                     break
                 }
 
-                stringStack += [tok] // push operator (the new one) to stack
+                stack.push(tok) // push operator (the new one) to stack
             } else { // token is not an operator
                 rpn += [tok] // add operand to result
             }
         }
     }
 
-    return rpn + stringStack.reversed()
+    return rpn + stack.reversed()
 }
 
 func calculate(_ exp: String) -> Double? {
-    doubleStack.removeAll()
+    var stack: [Double] = []
+
     let tokens = exp.tokenize()
     let infixExp = rpn(tokens)
     
     infixExp.forEach { op in
         if let operand = Double(op) {
-            doubleStack.push(operand)
+            stack.push(operand)
         } else {
-            if let a = doubleStack.pop(),
-               let b = doubleStack.pop(),
-               let c = performOperation(b, a, op) {
-                doubleStack.push(c)
+            if let b = stack.pop(),
+               let a = stack.pop(),
+               let c = performOperation(a, b, op) {
+                stack.push(c)
             }
         }
     }
     
-    return doubleStack.peek()
+    return stack.peek()
 }
