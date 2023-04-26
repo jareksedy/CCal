@@ -7,68 +7,38 @@
 
 import Foundation
 
-typealias BinaryOperation = (_ lhs: Double, _ rhs: Double) -> Double?
-
 enum Associativity {
-    case leftToRight
-    case rightToLeft
+    case ltr
+    case rtl
 }
 
-struct Operator {
-    let signifier: String
-    let precedence: Int
-    let associativity: Associativity
-    let binaryOperation: BinaryOperation?
-}
-
-struct Operators {
-    var signifiers: [String] { operators.map { $0.signifier }}
-    private var operators = [Operator]()
-    
-    subscript(key: String) -> Operator? {
-        get { operators.first(where: { $0.signifier == key })}
-        set(newValue) {
-            if let index = operators.firstIndex(where: { $0.signifier == key }) {
-                if let newValue = newValue {
-                    operators[index] = newValue
-                } else {
-                    operators.remove(at: index)
-                }
-            } else if let newValue = newValue {
-                operators.append(newValue)
-            }
-        }
-    }
-    
-    init(_ operators: [Operator]) {
-        self.operators = operators
-    }
-}
+typealias BinaryOperation = (_ lhs: Double, _ rhs: Double) -> Double?
+typealias Operator = [String: (prec: Int, assoc: Associativity, binaryOperation: BinaryOperation)]
 
 class RPNCal {
-    private var operators = Operators([
-        Operator(signifier: .plus, precedence: 2, associativity: .leftToRight, binaryOperation: { l, r in l + r }),
-        Operator(signifier: .minus, precedence: 2, associativity: .leftToRight, binaryOperation: { l, r in l - r }),
-        Operator(signifier: .asterisk, precedence: 3, associativity: .leftToRight, binaryOperation: { l, r in l * r }),
-        Operator(signifier: .slash, precedence: 3, associativity: .leftToRight, binaryOperation: { l, r in l / r }),
-    ])
-
+    private var operators: Operator = [
+        .plus: (prec: 2, assoc: .ltr, binaryOperation: { lhs, rhs in lhs + rhs }),
+        .minus: (prec: 2, assoc: .ltr, binaryOperation: { lhs, rhs in lhs - rhs }),
+        .asterisk: (prec: 3, assoc: .ltr, binaryOperation: { lhs, rhs in lhs * rhs }),
+        .slash: (prec: 3, assoc: .ltr, binaryOperation: { lhs, rhs in lhs / rhs })
+    ]
+    
     var allowedCharacters: String {
-        "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" + .dot + operators.signifiers.joined() + .parentheses.joined()
+        "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" + .dot + operators.keys.joined() + .parentheses.joined()
     }
     
     func calculate(_ exp: String) -> Double? {
         var stack: [Double] = []
         
-        let tokens = exp.tokenize()
-        let infixExp = rpn(tokens)
+        let tokens = tokenize(exp)
+        let infixExp = toRPN(tokens)
         
         infixExp.forEach { op in
             if let operand = Double(op) {
                 stack.push(operand)
             } else if let b = stack.pop(),
                       let a = stack.pop(),
-                      let result = operators[op]?.binaryOperation?(a, b) {
+                      let result = operators[op]?.binaryOperation(a, b) {
                 stack.push(result)
             }
         }
@@ -77,24 +47,33 @@ class RPNCal {
     }
 }
 
+// MARK: - OPERATOR PUBLIC METHODS
+extension RPNCal {
+    func addUpdateOperator(_ op: Operator) {
+        guard let key = op.keys.first, let value = op.values.first else { return }
+        operators[key] = value
+    }
+}
+
+// MARK: - PRIVATE METHODS
 private extension RPNCal {
     func strip(_ inputString: String) -> String {
         return inputString.filter(allowedCharacters.reversed().contains)
     }
     
     func tokenize(_ inputString: String) -> [String] {
-        let operatorTokens: Set<Character> = Set(String.parentheses.joined() + operators.signifiers.joined())
+        let operatorTokens: Set<Character> = Set(String.parentheses.joined() + operators.keys.joined())
         var result: [String] = []
-        var currentString: String = ""
+        var currentString: String = .empty
         
-        for char in inputString.strip() {
+        for char in inputString.stripWhitespaces() {
             if operatorTokens.contains(char) {
                 if !currentString.isEmpty {
                     result.append(currentString)
                 }
                 currentString = String(char)
                 result.append(currentString)
-                currentString = ""
+                currentString = .empty
             } else {
                 currentString.append(char)
             }
@@ -106,8 +85,8 @@ private extension RPNCal {
         
         return result
     }
-    
-    func rpn(_ tokens: [String]) -> [String] {
+
+    func toRPN(_ tokens: [String]) -> [String] {
         var stack: [String] = [] // holds operators and left parenthesis
         var rpn: [String] = []
         
@@ -130,7 +109,7 @@ private extension RPNCal {
                 if let o1 = operators[token] { // token is an operator?
                     for op in stack.reversed() {
                         if let o2 = operators[op] {
-                            if !(o1.precedence > o2.precedence || (o1.precedence == o2.precedence && o1.associativity == .rightToLeft)) {
+                            if !(o1.prec > o2.prec || (o1.prec == o2.prec && o1.assoc == .rtl)) {
                                 // top item is an operator that needs to come off
                                 rpn += [stack.pop()!] // pop and add it to the result
                                 continue

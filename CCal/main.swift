@@ -10,14 +10,16 @@ import Foundation
 let rpnCal = RPNCal()
 var input: String
 
+rpnCal.addUpdateOperator([.circumflex: (prec: 4, assoc: .rtl, binaryOperation: { lhs, rhs in pow(lhs, rhs) })])
+
 while true {
-    print("exp:", terminator: " ")
-    input = readLine() ?? ""
-    if input == "" { break }
+    print("exp:", terminator: .whitespace)
+    input = readLine() ?? .empty
+    if input == .empty { break }
     
     if let result = rpnCal.calculate(input) {
-        print("\(input.tokenize().joined(separator: .whitespace)) =", result)
+        print("\(input) =", result)
     } else {
-        print("\(input.tokenize().joined(separator: .whitespace)) = err!")
+        print("\(input) = err!")
     }
 }
