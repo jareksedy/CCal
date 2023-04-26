@@ -7,6 +7,7 @@
 
 import Foundation
 
+let rpnCal = RPNCal()
 var input: String
 
 while true {
@@ -14,7 +15,7 @@ while true {
     input = readLine() ?? ""
     if input == "" { break }
     
-    if let result = calculate(input) {
+    if let result = rpnCal.calculate(input) {
         print("\(input.tokenize().joined(separator: .whitespace)) =", result)
     } else {
         print("\(input.tokenize().joined(separator: .whitespace)) = err!")

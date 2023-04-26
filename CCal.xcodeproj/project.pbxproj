@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		CA311A8F29F6501600CEB8C2 /* String+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA311A8E29F6501600CEB8C2 /* String+Helpers.swift */; };
 		CA311A9129F6506400CEB8C2 /* String+SpecialCharacters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA311A9029F6506400CEB8C2 /* String+SpecialCharacters.swift */; };
+		CA9EDE6329F8D0E600FC9B96 /* RPNCal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9EDE6229F8D0E600FC9B96 /* RPNCal.swift */; };
 		CAE7372429F5A097000982C1 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE7372329F5A097000982C1 /* main.swift */; };
-		CAE7372B29F5A203000982C1 /* Array+PushPopPeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE7372A29F5A203000982C1 /* Array+PushPopPeek.swift */; };
-		CAE7372E29F5A305000982C1 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE7372D29F5A305000982C1 /* Calculator.swift */; };
+		CAE7372B29F5A203000982C1 /* Array+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE7372A29F5A203000982C1 /* Array+Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,10 +29,10 @@
 /* Begin PBXFileReference section */
 		CA311A8E29F6501600CEB8C2 /* String+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Helpers.swift"; sourceTree = "<group>"; };
 		CA311A9029F6506400CEB8C2 /* String+SpecialCharacters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+SpecialCharacters.swift"; sourceTree = "<group>"; };
+		CA9EDE6229F8D0E600FC9B96 /* RPNCal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPNCal.swift; sourceTree = "<group>"; };
 		CAE7372029F5A097000982C1 /* CCal */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CCal; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAE7372329F5A097000982C1 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		CAE7372A29F5A203000982C1 /* Array+PushPopPeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+PushPopPeek.swift"; sourceTree = "<group>"; };
-		CAE7372D29F5A305000982C1 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
+		CAE7372A29F5A203000982C1 /* Array+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Helpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				CAE7372C29F5A2D8000982C1 /* Extensions */,
-				CAE7372D29F5A305000982C1 /* Calculator.swift */,
+				CA9EDE6229F8D0E600FC9B96 /* RPNCal.swift */,
 				CAE7372329F5A097000982C1 /* main.swift */,
 			);
 			path = CCal;
@@ -75,7 +75,7 @@
 		CAE7372C29F5A2D8000982C1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				CAE7372A29F5A203000982C1 /* Array+PushPopPeek.swift */,
+				CAE7372A29F5A203000982C1 /* Array+Helpers.swift */,
 				CA311A8E29F6501600CEB8C2 /* String+Helpers.swift */,
 				CA311A9029F6506400CEB8C2 /* String+SpecialCharacters.swift */,
 			);
@@ -142,9 +142,9 @@
 			files = (
 				CA311A9129F6506400CEB8C2 /* String+SpecialCharacters.swift in Sources */,
 				CA311A8F29F6501600CEB8C2 /* String+Helpers.swift in Sources */,
-				CAE7372B29F5A203000982C1 /* Array+PushPopPeek.swift in Sources */,
+				CAE7372B29F5A203000982C1 /* Array+Helpers.swift in Sources */,
+				CA9EDE6329F8D0E600FC9B96 /* RPNCal.swift in Sources */,
 				CAE7372429F5A097000982C1 /* main.swift in Sources */,
-				CAE7372E29F5A305000982C1 /* Calculator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

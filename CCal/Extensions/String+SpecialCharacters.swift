@@ -13,7 +13,13 @@ extension String {
     
     static var plus = "+"
     static var minus = "-"
-    static var multiplication = "*"
-    static var division = "/"
-    static var power = "^"
+    static var asterisk = "*"
+    static var slash = "/"
+    static var circumflex = "^"
+    static var percent = "%"
+    static var dot = "."
+    
+    static var leftParenthesis = "("
+    static var rightParenthesis = ")"
+    static var parentheses = [leftParenthesis, rightParenthesis]
 }
