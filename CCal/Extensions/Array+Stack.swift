@@ -6,7 +6,15 @@
 //
 
 extension Array {
-    mutating func push(_ element: Element) { self.append(element) }
-    mutating func pop() -> Element? { self.popLast() }
-    func peek() -> Element? { self.last }
+    mutating func push(_ element: Element) {
+        self.append(element)
+    }
+    
+    mutating func pop() -> Element? {
+        self.popLast()
+    }
+    
+    func peek() -> Element? {
+        self.last
+    }
 }
