@@ -27,7 +27,7 @@ class RPNCal {
         "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" + .dot + operators.keys.joined() + .parentheses.joined()
     }
     
-    func calculate(_ exp: String) -> Double? {
+    func evaluate(_ exp: String) -> Double? {
         var stack: [Double] = []
         
         let tokens = tokenize(exp)
@@ -36,9 +36,9 @@ class RPNCal {
         infixExp.forEach { op in
             if let operand = Double(op) {
                 stack.push(operand)
-            } else if let b = stack.pop(),
-                      let a = stack.pop(),
-                      let result = operators[op]?.binaryOperation(a, b) {
+            } else if let rhs = stack.pop(),
+                      let lhs = stack.pop(),
+                      let result = operators[op]?.binaryOperation(lhs, rhs) {
                 stack.push(result)
             }
         }

@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		CA311A9129F6506400CEB8C2 /* String+SpecialCharacters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA311A9029F6506400CEB8C2 /* String+SpecialCharacters.swift */; };
+		CA72382B29F9902F00DB76D3 /* CCalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA72382A29F9902F00DB76D3 /* CCalTests.swift */; };
+		CA72382F29F9903900DB76D3 /* RPNCal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9EDE6229F8D0E600FC9B96 /* RPNCal.swift */; };
+		CA72383029F9903E00DB76D3 /* String+SpecialCharacters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA311A9029F6506400CEB8C2 /* String+SpecialCharacters.swift */; };
+		CA72383129F9904100DB76D3 /* Array+Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE7372A29F5A203000982C1 /* Array+Stack.swift */; };
 		CA9EDE6329F8D0E600FC9B96 /* RPNCal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9EDE6229F8D0E600FC9B96 /* RPNCal.swift */; };
 		CAE7372429F5A097000982C1 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE7372329F5A097000982C1 /* main.swift */; };
 		CAE7372B29F5A203000982C1 /* Array+Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE7372A29F5A203000982C1 /* Array+Stack.swift */; };
@@ -27,6 +31,8 @@
 
 /* Begin PBXFileReference section */
 		CA311A9029F6506400CEB8C2 /* String+SpecialCharacters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+SpecialCharacters.swift"; sourceTree = "<group>"; };
+		CA72382829F9902E00DB76D3 /* CCalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA72382A29F9902F00DB76D3 /* CCalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCalTests.swift; sourceTree = "<group>"; };
 		CA9EDE6229F8D0E600FC9B96 /* RPNCal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPNCal.swift; sourceTree = "<group>"; };
 		CAE7372029F5A097000982C1 /* CCal */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CCal; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAE7372329F5A097000982C1 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -34,6 +40,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CA72382529F9902E00DB76D3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CAE7371D29F5A097000982C1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -44,10 +57,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA72382929F9902F00DB76D3 /* CCalTests */ = {
+			isa = PBXGroup;
+			children = (
+				CA72382A29F9902F00DB76D3 /* CCalTests.swift */,
+			);
+			path = CCalTests;
+			sourceTree = "<group>";
+		};
 		CAE7371729F5A097000982C1 = {
 			isa = PBXGroup;
 			children = (
 				CAE7372229F5A097000982C1 /* CCal */,
+				CA72382929F9902F00DB76D3 /* CCalTests */,
 				CAE7372129F5A097000982C1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				CAE7372029F5A097000982C1 /* CCal */,
+				CA72382829F9902E00DB76D3 /* CCalTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -82,6 +105,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		CA72382729F9902E00DB76D3 /* CCalTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA72382C29F9902F00DB76D3 /* Build configuration list for PBXNativeTarget "CCalTests" */;
+			buildPhases = (
+				CA72382429F9902E00DB76D3 /* Sources */,
+				CA72382529F9902E00DB76D3 /* Frameworks */,
+				CA72382629F9902E00DB76D3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CCalTests;
+			productName = CCalTests;
+			productReference = CA72382829F9902E00DB76D3 /* CCalTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		CAE7371F29F5A097000982C1 /* CCal */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CAE7372729F5A097000982C1 /* Build configuration list for PBXNativeTarget "CCal" */;
@@ -109,6 +149,9 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					CA72382729F9902E00DB76D3 = {
+						CreatedOnToolsVersion = 14.3;
+					};
 					CAE7371F29F5A097000982C1 = {
 						CreatedOnToolsVersion = 14.3;
 					};
@@ -128,11 +171,33 @@
 			projectRoot = "";
 			targets = (
 				CAE7371F29F5A097000982C1 /* CCal */,
+				CA72382729F9902E00DB76D3 /* CCalTests */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		CA72382629F9902E00DB76D3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		CA72382429F9902E00DB76D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA72383129F9904100DB76D3 /* Array+Stack.swift in Sources */,
+				CA72383029F9903E00DB76D3 /* String+SpecialCharacters.swift in Sources */,
+				CA72382B29F9902F00DB76D3 /* CCalTests.swift in Sources */,
+				CA72382F29F9903900DB76D3 /* RPNCal.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CAE7371C29F5A097000982C1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -147,6 +212,36 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		CA72382D29F9902F00DB76D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4NK62H99X6;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jareksedy.CCalTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		CA72382E29F9902F00DB76D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4NK62H99X6;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jareksedy.CCalTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		CAE7372529F5A097000982C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -289,6 +384,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CA72382C29F9902F00DB76D3 /* Build configuration list for PBXNativeTarget "CCalTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA72382D29F9902F00DB76D3 /* Debug */,
+				CA72382E29F9902F00DB76D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CAE7371B29F5A097000982C1 /* Build configuration list for PBXProject "CCal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

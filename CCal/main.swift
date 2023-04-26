@@ -7,8 +7,8 @@
 
 import Foundation
 
-let rpnCal = RPNCal()
 var input: String
+let rpnCal = RPNCal()
 
 rpnCal.addUpdateOperator([.circumflex: (prec: 4, assoc: .rtl, binaryOperation: { lhs, rhs in pow(lhs, rhs) })])
 
@@ -17,7 +17,7 @@ while true {
     input = readLine() ?? .empty
     if input == .empty { break }
     
-    if let result = rpnCal.calculate(input) {
+    if let result = rpnCal.evaluate(input) {
         print("\(input) =", result)
     } else {
         print("\(input) = err!")
