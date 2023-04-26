@@ -23,9 +23,9 @@ class RPNCal {
         .slash: (prec: 3, assoc: .ltr, binaryOperation: { lhs, rhs in lhs / rhs })
     ]
     
-    var allowedCharacters: String {
-        "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" + .dot + operators.keys.joined() + .parentheses.joined()
-    }
+//    var allowedCharacters: String {
+//        "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" + .dot + operators.keys.joined() + .parentheses.joined()
+//    }
     
     func evaluate(_ exp: String) -> Double? {
         var stack: [Double] = []
@@ -53,13 +53,17 @@ extension RPNCal {
         guard let key = op.keys.first, let value = op.values.first else { return }
         operators[key] = value
     }
+    
+    func removeOperator(_ op: String) {
+        operators.removeValue(forKey: op)
+    }
 }
 
 // MARK: - PRIVATE METHODS
 private extension RPNCal {
-    func strip(_ inputString: String) -> String {
-        return inputString.filter(allowedCharacters.reversed().contains)
-    }
+//    func strip(_ inputString: String) -> String {
+//        return inputString.filter(allowedCharacters.reversed().contains)
+//    }
     
     func tokenize(_ inputString: String) -> [String] {
         let operatorTokens: Set<Character> = Set(String.parentheses.joined() + operators.keys.joined())
