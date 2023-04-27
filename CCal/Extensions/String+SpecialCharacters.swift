@@ -2,7 +2,7 @@
 //  String+SpecialCharacters.swift
 //  CCal
 //
-//  Created by Ярослав on 24.04.2023.
+//  Created by Yaroslav Sedyshev on 24.04.2023.
 //
 
 import Foundation

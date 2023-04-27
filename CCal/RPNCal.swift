@@ -2,34 +2,29 @@
 //  RPNCal.swift
 //  CCal
 //
-//  Created by Ярослав on 26.04.2023.
+//  Created by Yaroslav Sedyshev on 26.04.2023.
 //
 
 import Foundation
 
-enum Associativity {
-    case ltr
-    case rtl
-}
-
 typealias BinaryOperation = (_ lhs: Double, _ rhs: Double) -> Double?
-typealias Operator = [String: (prec: Int, assoc: Associativity, binaryOperation: BinaryOperation)]
+typealias Operator = [String: (precedence: Int, binaryOperation: BinaryOperation)]
 
 class RPNCal {
     private var operators: Operator = [
-        .plus: (prec: 2, assoc: .ltr, binaryOperation: { lhs, rhs in lhs + rhs }),
-        .minus: (prec: 2, assoc: .ltr, binaryOperation: { lhs, rhs in lhs - rhs }),
-        .asterisk: (prec: 3, assoc: .ltr, binaryOperation: { lhs, rhs in lhs * rhs }),
-        .slash: (prec: 3, assoc: .ltr, binaryOperation: { lhs, rhs in lhs / rhs })
+        .plus: (precedence: 2, binaryOperation: { lhs, rhs in lhs + rhs }),
+        .minus: (precedence: 2, binaryOperation: { lhs, rhs in lhs - rhs }),
+        .asterisk: (precedence: 3, binaryOperation: { lhs, rhs in lhs * rhs }),
+        .slash: (precedence: 3, binaryOperation: { lhs, rhs in lhs / rhs })
     ]
     
     func evaluate(_ exp: String) -> Double? {
+        let tokens = tokenize(exp)
+        let rpnExp = toRPN(tokens)
+        
         var stack: [Double] = []
         
-        let tokens = tokenize(exp)
-        let infixExp = toRPN(tokens)
-        
-        infixExp.forEach { op in
+        rpnExp.forEach { op in
             if let operand = Double(op) {
                 stack.push(operand)
             } else if let rhs = stack.pop(),
@@ -56,7 +51,7 @@ extension RPNCal {
 }
 
 // MARK: - PRIVATE METHODS
-private extension RPNCal {    
+private extension RPNCal {
     func tokenize(_ inputString: String) -> [String] {
         let operatorTokens: Set<Character> = Set(String.parentheses.joined() + operators.keys.joined())
         var result: [String] = []
@@ -81,16 +76,14 @@ private extension RPNCal {
         
         return result
     }
-
+    
     func toRPN(_ tokens: [String]) -> [String] {
         var stack: [String] = [] // holds operators and left parenthesis
         var rpn: [String] = []
         
         for token in tokens {
             switch token {
-            case .leftParenthesis:
-                stack.push(token) // push "(" to stack
-                
+            case .leftParenthesis: stack.push(token) // push "(" to stack
             case .rightParenthesis:
                 while !stack.isEmpty {
                     let op = stack.pop()! // pop item from stack
@@ -100,12 +93,11 @@ private extension RPNCal {
                         rpn += [op] // add operator to result
                     }
                 }
-                
             default:
                 if let o1 = operators[token] { // token is an operator?
                     for op in stack.reversed() {
                         if let o2 = operators[op] {
-                            if !(o1.prec > o2.prec || (o1.prec == o2.prec && o1.assoc == .rtl)) {
+                            if !(o1.precedence > o2.precedence) {
                                 // top item is an operator that needs to come off
                                 rpn += [stack.pop()!] // pop and add it to the result
                                 continue

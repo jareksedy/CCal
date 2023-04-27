@@ -2,7 +2,7 @@
 //  CCalTests.swift
 //  CCalTests
 //
-//  Created by Ярослав on 26.04.2023.
+//  Created by Yaroslav Sedyshev on 26.04.2023.
 //
 
 import XCTest
@@ -22,7 +22,7 @@ final class CCalTests: XCTestCase {
 
     override func setUpWithError() throws {
         rpnCal = RPNCal()
-        rpnCal?.addUpdateOperator([.circumflex: (prec: 4, assoc: .rtl, binaryOperation: { lhs, rhs in pow(lhs, rhs) })])
+        rpnCal?.addUpdateOperator([.circumflex: (precedence: 4, binaryOperation: { lhs, rhs in pow(lhs, rhs) })])
         //rpnCal?.removeOperator(.asterisk)
     }
 
