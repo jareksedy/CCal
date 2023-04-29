@@ -40,6 +40,10 @@ class RPNCal {
 
 // MARK: - PUBLIC METHODS
 extension RPNCal {
+    func getSupportedOperators() -> String {
+        return operators.keys.sorted().joined(separator: .whitespace)
+    }
+    
     func addUpdateOperator(_ op: BinaryOperator) {
         guard let key = op.keys.first, let value = op.values.first else { return }
         operators[key] = value
@@ -57,7 +61,7 @@ private extension RPNCal {
         var result: [String] = []
         var currentString: String = .empty
         
-        for char in inputString.stripWhitespaces() {
+        inputString.forEach { char in
             if operatorTokens.contains(char) {
                 if !currentString.isEmpty {
                     result.append(currentString)
@@ -81,33 +85,33 @@ private extension RPNCal {
         var queue = [String]()
         var stack = [String]()
         
-        for token in tokens {
+        tokens.forEach { token in
             switch token {
-            case .leftParenthesis: stack.push(token) // push "(" to stack
+            case .leftParenthesis:
+                stack.push(token)
             case .rightParenthesis:
                 while !stack.isEmpty {
-                    let op = stack.pop()! // pop item from stack
+                    let op = stack.pop()!
                     if op == .leftParenthesis {
-                        break // discard "("
+                        break
                     } else {
-                        queue += [op] // add operator to result
+                        queue.enqueue(op)
                     }
                 }
             default:
-                if let o1 = operators[token] { // token is an operator?
+                if let o1 = operators[token] {
                     for op in stack.reversed() {
                         if let o2 = operators[op] {
                             if !(o1.precedence > o2.precedence) {
-                                // top item is an operator that needs to come off
-                                queue += [stack.pop()!] // pop and add it to the result
+                                queue.enqueue(stack.pop()!)
                                 continue
                             }
                         }
                         break
                     }
-                    stack.push(token) // push operator (the new one) to stack
-                } else { // token is not an operator
-                    queue += [token] // add operand to result
+                    stack.push(token)
+                } else {
+                    queue.enqueue(token)
                 }
             }
         }

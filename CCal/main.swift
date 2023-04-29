@@ -12,7 +12,9 @@ let rpnCal = RPNCal()
 
 rpnCal.addUpdateOperator([.circumflex: (precedence: 4, binaryOperation: { lhs, rhs in pow(lhs, rhs) })])
 
-while true {
+print("Welcome to CCcal (Concole Calculator). Supported operators: \(rpnCal.getSupportedOperators())")
+
+repeat {
     print("exp:", terminator: .whitespace)
     input = readLine() ?? .empty
     if input == .empty { break }
@@ -22,4 +24,4 @@ while true {
     } else {
         print("\(input) = err!")
     }
-}
+} while input != .empty

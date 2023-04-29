@@ -10,6 +10,10 @@ extension Array {
         self.append(element)
     }
     
+    mutating func enqueue(_ element: Element) {
+        self.append(element)
+    }
+    
     mutating func pop() -> Element? {
         self.popLast()
     }
