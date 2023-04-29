@@ -8,10 +8,10 @@
 import Foundation
 
 typealias BinaryOperation = (_ lhs: Double, _ rhs: Double) -> Double?
-typealias Operator = [String: (precedence: Int, binaryOperation: BinaryOperation)]
+typealias BinaryOperator = [String: (precedence: Int, binaryOperation: BinaryOperation)]
 
 class RPNCal {
-    private var operators: Operator = [
+    private var operators: BinaryOperator = [
         .plus: (precedence: 2, binaryOperation: { lhs, rhs in lhs + rhs }),
         .minus: (precedence: 2, binaryOperation: { lhs, rhs in lhs - rhs }),
         .asterisk: (precedence: 3, binaryOperation: { lhs, rhs in lhs * rhs }),
@@ -22,7 +22,7 @@ class RPNCal {
         let tokens = tokenize(exp)
         let rpnExp = toRPN(tokens)
         
-        var stack: [Double] = []
+        var stack = [Double]()
         
         rpnExp.forEach { op in
             if let operand = Double(op) {
@@ -38,9 +38,9 @@ class RPNCal {
     }
 }
 
-// MARK: - OPERATOR PUBLIC METHODS
+// MARK: - PUBLIC METHODS
 extension RPNCal {
-    func addUpdateOperator(_ op: Operator) {
+    func addUpdateOperator(_ op: BinaryOperator) {
         guard let key = op.keys.first, let value = op.values.first else { return }
         operators[key] = value
     }
@@ -78,8 +78,8 @@ private extension RPNCal {
     }
     
     func toRPN(_ tokens: [String]) -> [String] {
-        var stack: [String] = [] // holds operators and left parenthesis
-        var rpn: [String] = []
+        var queue = [String]()
+        var stack = [String]()
         
         for token in tokens {
             switch token {
@@ -90,7 +90,7 @@ private extension RPNCal {
                     if op == .leftParenthesis {
                         break // discard "("
                     } else {
-                        rpn += [op] // add operator to result
+                        queue += [op] // add operator to result
                     }
                 }
             default:
@@ -99,7 +99,7 @@ private extension RPNCal {
                         if let o2 = operators[op] {
                             if !(o1.precedence > o2.precedence) {
                                 // top item is an operator that needs to come off
-                                rpn += [stack.pop()!] // pop and add it to the result
+                                queue += [stack.pop()!] // pop and add it to the result
                                 continue
                             }
                         }
@@ -107,11 +107,11 @@ private extension RPNCal {
                     }
                     stack.push(token) // push operator (the new one) to stack
                 } else { // token is not an operator
-                    rpn += [token] // add operand to result
+                    queue += [token] // add operand to result
                 }
             }
         }
         
-        return rpn + stack.reversed()
+        return queue + stack.reversed()
     }
 }
