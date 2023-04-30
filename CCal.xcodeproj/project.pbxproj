@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA1AD38329FE146200FE90F6 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1AD38229FE146200FE90F6 /* Strings.swift */; };
 		CA311A9129F6506400CEB8C2 /* String+SpecialCharacters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA311A9029F6506400CEB8C2 /* String+SpecialCharacters.swift */; };
 		CA72382B29F9902F00DB76D3 /* CCalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA72382A29F9902F00DB76D3 /* CCalTests.swift */; };
 		CA72382F29F9903900DB76D3 /* RPNCal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9EDE6229F8D0E600FC9B96 /* RPNCal.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CA1AD38229FE146200FE90F6 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		CA311A9029F6506400CEB8C2 /* String+SpecialCharacters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+SpecialCharacters.swift"; sourceTree = "<group>"; };
 		CA72382829F9902E00DB76D3 /* CCalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA72382A29F9902F00DB76D3 /* CCalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCalTests.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				CAE7372A29F5A203000982C1 /* Array+Helpers.swift */,
+				CA1AD38229FE146200FE90F6 /* Strings.swift */,
 				CA311A9029F6506400CEB8C2 /* String+SpecialCharacters.swift */,
 			);
 			path = Extensions;
@@ -204,6 +207,7 @@
 			files = (
 				CA311A9129F6506400CEB8C2 /* String+SpecialCharacters.swift in Sources */,
 				CAE7372B29F5A203000982C1 /* Array+Helpers.swift in Sources */,
+				CA1AD38329FE146200FE90F6 /* Strings.swift in Sources */,
 				CA9EDE6329F8D0E600FC9B96 /* RPNCal.swift in Sources */,
 				CAE7372429F5A097000982C1 /* main.swift in Sources */,
 			);

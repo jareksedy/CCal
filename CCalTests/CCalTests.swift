@@ -23,7 +23,6 @@ final class CCalTests: XCTestCase {
     override func setUpWithError() throws {
         rpnCal = RPNCal()
         rpnCal?.addUpdateOperator([.circumflex: (precedence: 4, binaryOperation: { lhs, rhs in pow(lhs, rhs) })])
-        //rpnCal?.removeOperator(.asterisk)
     }
 
     override func tearDownWithError() throws {

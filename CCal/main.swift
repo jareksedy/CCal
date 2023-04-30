@@ -12,16 +12,15 @@ let rpnCal = RPNCal()
 
 rpnCal.addUpdateOperator([.circumflex: (precedence: 4, binaryOperation: { lhs, rhs in pow(lhs, rhs) })])
 
-print("Welcome to CCcal (Concole Calculator). Supported operators: \(rpnCal.getSupportedOperators())")
+print(Strings.welcomeMessage)
 
 repeat {
-    print("exp:", terminator: .whitespace)
+    print(":", terminator: .whitespace)
     input = readLine() ?? .empty
-    if input == .empty { break }
     
     if let result = rpnCal.evaluate(input) {
         print("\(input) =", result)
-    } else {
-        print("\(input) = err!")
+    } else if input != .empty {
+        print("\(input) = ERROR!")
     }
 } while input != .empty
