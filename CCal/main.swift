@@ -9,6 +9,7 @@ import Foundation
 
 var input: String
 let rpnCal = RPNCal()
+let prompt = "E:"
 
 rpnCal.addUpdateOperator([.circumflex: (precedence: 4, binaryOperation: { lhs, rhs in pow(lhs, rhs) })])
 
@@ -16,13 +17,13 @@ let welcomeMessage = Strings.welcomeMessage.format(rpnCal.getSupportedOperators(
 print(welcomeMessage)
 
 repeat {
-    print(":", terminator: .whitespace)
+    print(prompt, terminator: .whitespace)
     input = readLine()?.stripWhitespaces() ?? .empty
     
     let formattedExpression = rpnCal.getFormattedExpression(input)
     
     if let result = rpnCal.evaluate(input) {
-        print("\(formattedExpression) =", result)
+        print("\(formattedExpression) = \(result)")
     } else if input != .empty {
         print("\(formattedExpression) = ERROR!")
     }
