@@ -17,11 +17,13 @@ print(welcomeMessage)
 
 repeat {
     print(":", terminator: .whitespace)
-    input = readLine() ?? .empty
+    input = readLine()?.stripWhitespaces() ?? .empty
+    
+    let formattedExpression = rpnCal.getFormattedExpression(input)
     
     if let result = rpnCal.evaluate(input) {
-        print("\(input) =", result)
+        print("\(formattedExpression) =", result)
     } else if input != .empty {
-        print("\(input) = ERROR!")
+        print("\(formattedExpression) = ERROR!")
     }
 } while input != .empty

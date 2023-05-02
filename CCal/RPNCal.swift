@@ -38,6 +38,10 @@ class RPNCal {
 
 // MARK: - PUBLIC METHODS
 extension RPNCal {
+    func getFormattedExpression(_ exp: String) -> String {
+        return tokenize(exp).joined(separator: .whitespace)
+    }
+    
     func getSupportedOperators() -> [String] {
         return Array(operators.keys)
     }
