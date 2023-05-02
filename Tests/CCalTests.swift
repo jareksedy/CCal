@@ -36,6 +36,9 @@ final class CCalTests: XCTestCase {
         "1.23+4.56-7.89*0.12/3.45^6+7.89-4.56/1.23+0.45*8.76-5.43/2.34+9.87^2+9.87*1.23-4.56/0.45+7.89-3.21+0.12^3+9.87": 125,
         "2.2^2.04*345+2.4*(3.05+992.99)-234": 3_879,
         ".23+4.56-7.89*0.12/32.45^6.4+7.209-34.56/1.23+0.45*8.76-5.43/2.34+9.87^2+9.87*1.23-4.56/0.45+7.89-3.21+0.312^3+9.87": 99,
+        "45%3.4*123.4+0.5": 99,
+        "42.2^2.04%34.4*345+2.4*(3.05+992.99%9.5*2^2.5%0.25)-234": 1_296,
+        "(32.025+0.125-(12.9+23.4)/2.25*0.00000921-(124.25+12.5*0.25)%2.29)^0.19%2.5": 1,
         ]
     
     var rpnCal: RPNCal?
@@ -43,6 +46,7 @@ final class CCalTests: XCTestCase {
     override func setUpWithError() throws {
         rpnCal = RPNCal()
         rpnCal?.addUpdateOperator([.circumflex: (precedence: 4, binaryOperation: { lhs, rhs in pow(lhs, rhs) })])
+        rpnCal?.addUpdateOperator([.percent: (precedence: 3, binaryOperation: { lhs, rhs in lhs.truncatingRemainder(dividingBy: rhs) })])
     }
 
     override func tearDownWithError() throws {

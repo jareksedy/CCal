@@ -12,6 +12,7 @@ let rpnCal = RPNCal()
 let prompt = "E:"
 
 rpnCal.addUpdateOperator([.circumflex: (precedence: 4, binaryOperation: { lhs, rhs in pow(lhs, rhs) })])
+rpnCal.addUpdateOperator([.percent: (precedence: 3, binaryOperation: { lhs, rhs in lhs.truncatingRemainder(dividingBy: rhs) })])
 
 let welcomeMessage = Strings.welcomeMessage.format(rpnCal.getSupportedOperators().sorted().joined(separator: .comma + .whitespace))
 print(welcomeMessage)
