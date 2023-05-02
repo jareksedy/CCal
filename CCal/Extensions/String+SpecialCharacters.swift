@@ -5,8 +5,6 @@
 //  Created by Yaroslav Sedyshev on 24.04.2023.
 //
 
-import Foundation
-
 extension String {
     static var empty = ""
     static var whitespace = " "
@@ -18,6 +16,7 @@ extension String {
     static var circumflex = "^"
     static var percent = "%"
     static var dot = "."
+    static var comma = ","
     
     static var leftParenthesis = "("
     static var rightParenthesis = ")"
@@ -27,5 +26,9 @@ extension String {
 extension String {
     func stripWhitespaces() -> String {
         return self.replacingOccurrences(of: Self.whitespace, with: Self.empty)
+    }
+    
+    func format(_ args: CVarArg...) -> String {
+        String(format: self, arguments: args)
     }
 }

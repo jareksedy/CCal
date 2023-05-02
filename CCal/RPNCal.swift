@@ -5,8 +5,6 @@
 //  Created by Yaroslav Sedyshev on 26.04.2023.
 //
 
-import Foundation
-
 typealias BinaryOperation = (_ lhs: Double, _ rhs: Double) -> Double?
 typealias BinaryOperator = [String: (precedence: Int, binaryOperation: BinaryOperation)]
 
@@ -40,8 +38,8 @@ class RPNCal {
 
 // MARK: - PUBLIC METHODS
 extension RPNCal {
-    func getSupportedOperators() -> String {
-        return operators.keys.sorted().joined(separator: .whitespace)
+    func getSupportedOperators() -> [String] {
+        return Array(operators.keys)
     }
     
     func addUpdateOperator(_ op: BinaryOperator) {
@@ -58,27 +56,27 @@ extension RPNCal {
 private extension RPNCal {
     func tokenize(_ inputString: String) -> [String] {
         let operatorTokens: Set<Character> = Set(String.parentheses.joined() + operators.keys.joined())
-        var result: [String] = []
-        var currentString: String = .empty
+        var temp: String = .empty
+        var queue = [String]()
         
         inputString.forEach { char in
             if operatorTokens.contains(char) {
-                if !currentString.isEmpty {
-                    result.append(currentString)
+                if !temp.isEmpty {
+                    queue.enqueue(temp)
                 }
-                currentString = String(char)
-                result.append(currentString)
-                currentString = .empty
+                temp = String(char)
+                queue.enqueue(temp)
+                temp = .empty
             } else {
-                currentString.append(char)
+                temp.append(char)
             }
         }
         
-        if !currentString.isEmpty {
-            result.append(currentString)
+        if !temp.isEmpty {
+            queue.enqueue(temp)
         }
         
-        return result
+        return queue
     }
     
     func toRPN(_ tokens: [String]) -> [String] {

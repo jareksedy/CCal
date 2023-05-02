@@ -12,7 +12,8 @@ let rpnCal = RPNCal()
 
 rpnCal.addUpdateOperator([.circumflex: (precedence: 4, binaryOperation: { lhs, rhs in pow(lhs, rhs) })])
 
-print(Strings.welcomeMessage)
+let welcomeMessage = Strings.welcomeMessage.format(rpnCal.getSupportedOperators().sorted().joined(separator: .comma + .whitespace))
+print(welcomeMessage)
 
 repeat {
     print(":", terminator: .whitespace)
