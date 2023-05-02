@@ -34,6 +34,8 @@
 
 /* Begin PBXFileReference section */
 		CA0361F12A00D0C000F5C459 /* String+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Helpers.swift"; sourceTree = "<group>"; };
+		CA0361F62A00D3C700F5C459 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		CA0361F72A00D4F700F5C459 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CA1AD38229FE146200FE90F6 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		CA311A9029F6506400CEB8C2 /* String+SpecialCharacters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+SpecialCharacters.swift"; sourceTree = "<group>"; };
 		CA72382829F9902E00DB76D3 /* CCalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +91,8 @@
 		CAE7371729F5A097000982C1 = {
 			isa = PBXGroup;
 			children = (
+				CA0361F62A00D3C700F5C459 /* LICENSE.md */,
+				CA0361F72A00D4F700F5C459 /* README.md */,
 				CAE7372229F5A097000982C1 /* CCal */,
 				CA72382929F9902F00DB76D3 /* Tests */,
 				CAE7372129F5A097000982C1 /* Products */,
