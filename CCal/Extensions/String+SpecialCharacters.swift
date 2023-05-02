@@ -22,13 +22,3 @@ extension String {
     static var rightParenthesis = ")"
     static var parentheses = [leftParenthesis, rightParenthesis]
 }
-
-extension String {
-    func stripWhitespaces() -> String {
-        return self.replacingOccurrences(of: Self.whitespace, with: Self.empty)
-    }
-    
-    func format(_ args: CVarArg...) -> String {
-        String(format: self, arguments: args)
-    }
-}

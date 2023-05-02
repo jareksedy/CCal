@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA0361F22A00D0C000F5C459 /* String+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0361F12A00D0C000F5C459 /* String+Helpers.swift */; };
+		CA0361F32A00D0C000F5C459 /* String+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0361F12A00D0C000F5C459 /* String+Helpers.swift */; };
 		CA1AD38329FE146200FE90F6 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1AD38229FE146200FE90F6 /* Strings.swift */; };
 		CA311A9129F6506400CEB8C2 /* String+SpecialCharacters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA311A9029F6506400CEB8C2 /* String+SpecialCharacters.swift */; };
 		CA72382B29F9902F00DB76D3 /* CCalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA72382A29F9902F00DB76D3 /* CCalTests.swift */; };
@@ -31,6 +33,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CA0361F12A00D0C000F5C459 /* String+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Helpers.swift"; sourceTree = "<group>"; };
 		CA1AD38229FE146200FE90F6 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		CA311A9029F6506400CEB8C2 /* String+SpecialCharacters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+SpecialCharacters.swift"; sourceTree = "<group>"; };
 		CA72382829F9902E00DB76D3 /* CCalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,19 +62,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CA72382929F9902F00DB76D3 /* CCalTests */ = {
+		CA0361F42A00D0EB00F5C459 /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				CA1AD38229FE146200FE90F6 /* Strings.swift */,
+			);
+			path = Strings;
+			sourceTree = "<group>";
+		};
+		CA0361F52A00D0F700F5C459 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CA9EDE6229F8D0E600FC9B96 /* RPNCal.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		CA72382929F9902F00DB76D3 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				CA72382A29F9902F00DB76D3 /* CCalTests.swift */,
 			);
-			path = CCalTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		CAE7371729F5A097000982C1 = {
 			isa = PBXGroup;
 			children = (
 				CAE7372229F5A097000982C1 /* CCal */,
-				CA72382929F9902F00DB76D3 /* CCalTests */,
+				CA72382929F9902F00DB76D3 /* Tests */,
 				CAE7372129F5A097000982C1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,8 +107,9 @@
 		CAE7372229F5A097000982C1 /* CCal */ = {
 			isa = PBXGroup;
 			children = (
+				CA0361F52A00D0F700F5C459 /* Classes */,
 				CAE7372C29F5A2D8000982C1 /* Extensions */,
-				CA9EDE6229F8D0E600FC9B96 /* RPNCal.swift */,
+				CA0361F42A00D0EB00F5C459 /* Strings */,
 				CAE7372329F5A097000982C1 /* main.swift */,
 			);
 			path = CCal;
@@ -99,7 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				CAE7372A29F5A203000982C1 /* Array+Helpers.swift */,
-				CA1AD38229FE146200FE90F6 /* Strings.swift */,
+				CA0361F12A00D0C000F5C459 /* String+Helpers.swift */,
 				CA311A9029F6506400CEB8C2 /* String+SpecialCharacters.swift */,
 			);
 			path = Extensions;
@@ -194,6 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA0361F32A00D0C000F5C459 /* String+Helpers.swift in Sources */,
 				CA72383129F9904100DB76D3 /* Array+Helpers.swift in Sources */,
 				CA72383029F9903E00DB76D3 /* String+SpecialCharacters.swift in Sources */,
 				CA72382B29F9902F00DB76D3 /* CCalTests.swift in Sources */,
@@ -207,6 +228,7 @@
 			files = (
 				CA311A9129F6506400CEB8C2 /* String+SpecialCharacters.swift in Sources */,
 				CAE7372B29F5A203000982C1 /* Array+Helpers.swift in Sources */,
+				CA0361F22A00D0C000F5C459 /* String+Helpers.swift in Sources */,
 				CA1AD38329FE146200FE90F6 /* Strings.swift in Sources */,
 				CA9EDE6329F8D0E600FC9B96 /* RPNCal.swift in Sources */,
 				CAE7372429F5A097000982C1 /* main.swift in Sources */,

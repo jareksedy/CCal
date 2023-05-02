@@ -8,7 +8,7 @@
 import XCTest
 
 final class CCalTests: XCTestCase {
-    let expressions: [String: Int] = [
+    let testCases: [String: Int] = [
         "2+2": 4,
         "(2+4) * (4+6)": 60,
         "234.3+23.2/2+(32.3^4)/2": 544472,
@@ -35,6 +35,7 @@ final class CCalTests: XCTestCase {
         "1.23+4.56-7.89*0.12/3.45^6+7.89-4.56/1.23+0.45*8.76-5.43/2.34+9.87": 21,
         "1.23+4.56-7.89*0.12/3.45^6+7.89-4.56/1.23+0.45*8.76-5.43/2.34+9.87^2+9.87*1.23-4.56/0.45+7.89-3.21+0.12^3+9.87": 125,
         "2.2^2.04*345+2.4*(3.05+992.99)-234": 3_879,
+        ".23+4.56-7.89*0.12/32.45^6.4+7.209-34.56/1.23+0.45*8.76-5.43/2.34+9.87^2+9.87*1.23-4.56/0.45+7.89-3.21+0.312^3+9.87": 99,
         ]
     
     var rpnCal: RPNCal?
@@ -49,7 +50,7 @@ final class CCalTests: XCTestCase {
     }
 
     func testEvaluate() throws {
-        for (key, value) in expressions {
+        for (key, value) in testCases {
             let result = rpnCal?.evaluate(key.stripWhitespaces()) ?? 0
             //print(Int(result), value)
             XCTAssertTrue(Int(result) == value)
