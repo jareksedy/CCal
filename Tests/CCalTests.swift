@@ -56,7 +56,6 @@ final class CCalTests: XCTestCase {
     func testEvaluate() throws {
         for (key, value) in testCases {
             let result = rpnCal?.evaluate(key.stripWhitespaces()) ?? 0
-            //print(Int(result), value)
             XCTAssertTrue(Int(result) == value)
         }
     }
